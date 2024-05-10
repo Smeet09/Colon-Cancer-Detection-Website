@@ -1,0 +1,981 @@
+body {
+    background-color: #F4EEFD;
+    font-size: 16px;
+}
+
+.logo {
+    display: flex;
+    height: 5vh;
+    width: 2.5vw;
+    padding-top: 3vh;
+    padding-left: 2vw;
+}
+
+.logosetup {
+    height: 2%;
+    width: 15%;
+}
+
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background-color: rgba(255, 255, 255, 1.0);
+    z-index: 2;
+    margin-top: -1rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    border-radius: 2rem;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    color: black;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-left: 27%;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+.nav > a {
+    margin: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: lighter;
+    text-decoration: none;
+    color: #211D4F;
+}
+
+.nav > a:hover {
+    color: blueviolet;
+    transition: 0.1s ease;
+    border-bottom: blueviolet 3px solid;
+    cursor: pointer;
+}
+
+.nav > a:active {
+    color: #EF5261;
+}
+
+.logosetup {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.heading{
+    margin-top: 0.85rem;
+    color: blueviolet;
+    font-size: 2.5rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+}
+
+.navbar > .log {
+    margin-top: 2.1rem;
+}
+
+.navbar > .log > a{
+    padding-left: 25rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.navbar > .log:hover{
+    color: #EF5261;
+    transition: 0.1s ease;
+    cursor: pointer;
+}
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main > .combopicture > .doctor {
+    margin-top: 2rem;
+    height: 70vh;
+    width: 40vw;
+    z-index: 1;
+}
+
+/* .main > .combopicture > .blob {
+    height: 40vh;
+    width: 40vw;
+    margin-left: 6rem;
+    margin-top: -20rem;
+    z-index: -1;
+} */
+
+.main > .content {
+    height: 80vh;
+    width: 50vw;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main > .content > ul {
+    font-size: 1.5rem;
+    margin-top: 13rem;
+    margin-left: 6rem;
+    color: #211D4F;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.main > .content > h1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2.5rem;
+    margin-left: 8.6rem;
+    margin-top: -2rem;
+    color: #211D4F;
+}
+
+.main > .content > p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 8.7rem;
+    font-size: 1.3rem;
+    margin-top: -1.8rem;
+}
+
+.main > .content > a >button {
+    font-size: 1rem;
+    margin-left: 8.7rem;
+    border-radius: 5rem;
+    padding: 0.7rem 0.7rem;
+    width: 7vw;
+    background-color: #F4EEFD;
+    cursor: pointer;
+}
+
+.main > .content > a > button:hover {
+    background-color: blueviolet;
+    color: #F4EEFD;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+#ab {
+    margin-top: -12rem;
+}
+
+.about {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.about > .tagline {
+    font-size: 2rem;
+    height: 10vh;
+    width: 50vw;
+    margin-left: 14rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #211D4F;
+    font-weight: bold;
+    margin-top: 325px;
+}
+
+.sec {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 70%;
+    margin: 1rem;
+    text-align: justify;
+    color: rgba(0,0,0,0.7);
+    background-color: #FF9785;
+    font-size: 1rem;
+    margin-bottom: 4rem;
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 15%;
+    margin-bottom: 5vw;
+    box-shadow: 0 0 8px #211D4F;
+}
+
+.sec > h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #211D4F;
+}
+
+.sec > p {
+    margin-top: -0.1rem;
+}
+
+.service {
+    display: flex;
+    margin-top: -13rem;
+}
+
+.lung, .breast, .colon {
+    width: 33%;
+    height: 13rem;
+    text-align: left;
+    box-shadow: 0 0 1rem #d4bdf7;
+    background-color: white;
+    color: #211D4F;
+    padding-top: 8rem;
+    border-radius: 1rem;
+}
+
+.service > .lung {
+    margin-left: 1.5rem;
+}
+
+.service > .breast {
+    margin: 0 1.5rem;
+}
+
+.service > .colon {
+    margin-right: 1.5rem;
+}
+
+.lung > h2, .breast > h2, .colon > h2  {
+    font-size: 2rem;
+    margin-left: 1.5rem;
+    color: #211D4F;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.lung > p, .breast > p, .colon > p {
+    color: #211D4F;
+    font-size: 1rem;
+    margin: 0 1.5rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.lung > a > button, .breast > a > button, .colon > a > button {
+    font-size: 1rem;
+    margin: 1.5rem 1.5rem;
+    border-radius: 3.2rem;
+    padding: 0.5rem;
+    background-color: white;
+}
+
+.lung > a > button:hover, .breast > a > button:hover, .colon > a > button:hover{
+    background-color: blueviolet;
+    color: #F4EEFD;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+.images {
+    display: flex;
+}
+
+.images > .c1 {
+    width: 33%;
+    z-index: 1;
+    height: 18rem;
+    width: 25.2rem;
+    margin-left: 3vw;
+    margin-bottom: 3vw;
+}
+.images > .c2 {
+    width: 33%;
+    z-index: 1;
+    height: 18rem;
+    width: 25.2rem;
+    margin-left: 6vw;
+    margin-bottom: 3vw;
+}
+
+.images > .c3 {
+    width: 33%;
+    z-index: 1;
+    height: 18rem;
+    width: 25.2rem;
+    margin-left: 6.5vw;
+    margin-bottom: 3vw;
+}
+
+.works > .headings {
+    text-align: center;
+    margin-top: 5rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.5rem;
+    color: #211D4F;
+}
+
+.works > .sections {
+    display: flex;
+}
+
+.sec1 {
+    width: 33%;
+    border-radius: 1.2rem;
+    margin: 0.8rem;
+    background-color: #211D4F;
+}
+
+.sec1 > .head1, .sec1 > .head2, .sec1 > .head3{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    font-size: 3rem;
+    margin-left: 1rem;
+}
+
+.sec1 > .head1 {
+    color: #FFCA6A;
+    
+}
+
+.sec1 > .head2 {
+    color: #FF9785;
+}
+
+.sec1 > .head3 {
+    color: #BF5DFF;
+}
+
+.sec1 > p {
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 1rem;
+    margin-right: 0.4rem;
+    font-size: 1.2rem;
+}
+
+.footer {
+    display: flex;
+    background-color: white;
+    height: 11rem;
+    width: 50%;
+    margin: 0.8rem 1.5rem;
+    border-radius: 1rem;
+    margin-left: 25%;
+    margin-top: 3%;
+    margin-bottom: 1%;
+}
+
+.ft2, .ft3 {
+    width: 50%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.footer > .ft2 {
+    padding-left: 3rem;
+}
+
+.footer > .ft3 {
+    padding-left: 3rem;
+}
+
+.footer > .ft2 > .ftitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    width: 6.5rem;
+    color: #211D4F;
+    padding-bottom: 1rem;
+    border-bottom: 0.1rem solid #211D4F;
+}
+
+.footer > .ft2 > i {
+    margin: 0.5rem 0.25rempx;
+    font-size: 1.8rem;
+    color: #211D4F;
+    margin: 0.1rem;
+}
+
+.footer > .ft2 > i:hover {
+    color: #FF9785;
+}
+
+.footer > .ft3 > .contact {
+    font-size: 1.2rem;
+    font-weight: 300;
+    width: 8rem;
+    color: #211D4F;
+    padding-bottom: 1rem;
+    border-bottom: 0.1rem solid #211D4F;
+}
+
+.footer > .ft3 > .addr {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.8rem;
+}
+
+.footer > .ft3 > .addr > p{
+    margin-left: 0.5rem;
+    margin-top: -0.1rem;
+}
+
+.footer > .ft3 > .mail > p {
+    font-size: 0.9rem;
+    margin-left: 1.6rem;
+    font-weight: 400;
+}
+
+.footer > .ft3 > .mail > .d {
+    margin-top: -1rem;
+}
+
+.footer > .ft3 > .mail > .r {
+    margin-top: -0.2rem;
+}
+
+@media screen and (min-width: 432px) and (max-width: 768px) {
+    .logo {
+        height: 4vh;
+        width: 2vw;
+    }
+    
+    .heading{
+        margin-top: -2.8rem;
+        margin-left: 3.5rem;
+        font-size: 2.5rem;
+    }
+
+    .navbar {
+        display: flex;
+        flex-wrap: wrap;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        background-color: rgba(255, 255, 255, 1.0);
+        z-index: 2;
+        margin-top: -1rem;
+        margin-left: -1rem;
+        margin-right: -1rem;
+        border-radius: 2rem;
+    }
+    
+    .nav {
+        display: flex;
+        flex-wrap: wrap;
+        color: black;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2.5%;
+        margin-left: 21%;
+        padding-bottom: 1rem;
+        padding-top: 1rem;
+    }
+    
+    .nav > a {
+        margin: 0.5rem;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: lighter;
+        text-decoration: none;
+        color: #211D4F;
+    }
+    
+    .nav > a:hover {
+        color: blueviolet;
+        transition: 0.1s ease;
+        border-bottom: blueviolet 3px solid;
+        cursor: pointer;
+    }
+    
+    .nav > a:active {
+        color: #EF5261;
+    }
+    
+    .logosetup {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .navbar > .log {
+        margin-top: -2.7rem;
+        margin-left: 18rem;
+    }
+    
+    .navbar > .log > a{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    
+    .navbar > .log:hover{
+        color: #EF5261;
+        transition: 0.1s ease;
+        cursor: pointer;
+    }
+
+    .main {
+        display: block;
+        overflow-x: hidden;
+    }
+
+    .main > .combopicture {
+        display: flex;
+    }
+    
+    .main > .combopicture > .doctor {
+        margin-top: 2rem;
+        height: 70vh;
+        width: 40vw;
+        z-index: 1;
+        margin-left: 1.5rem;
+    }
+
+    .main > .combopicture > .blob {
+        height: 4rem;
+        width: 40rem;
+        margin-left: -18rem;
+        margin-top: 2.5rem;
+    }
+
+    .main > .content {
+        height: 80vh;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -2rem;
+    }
+    
+    .main > .content > ul {
+        font-size: 1.5rem;
+        margin-top: -1rem;
+        margin-left: 6rem;
+        color: #211D4F;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    
+    .main > .content > h1 {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 2.5rem;
+        margin-left: 8.6rem;
+        margin-top: -11rem;
+        color: #211D4F;
+    }
+    
+    .main > .content > p {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        margin-left: 8.7rem;
+        font-size: 1.3rem;
+        margin-top: -15rem;
+    }
+    
+    .main > .content > a {
+        margin-top: -22rem;
+        width: 20rem;
+    }
+
+    .main > .content > a >button {
+        font-size: 1rem;
+        width: 10rem;
+        border-radius: 5rem;
+        padding: 1rem 1rem;
+        background-color: #F4EEFD;
+        cursor: pointer;
+    }
+    
+    .main > .content > a > button:hover {
+        background-color: blueviolet;
+        color: #F4EEFD;
+        transition: 0.5s ease;
+        cursor: pointer;
+    }
+
+    .about {
+        display: block;
+        flex-wrap: wrap;
+        max-width: 100%;
+        margin-top: -30rem;
+    }
+    
+    .about > .tagline {
+        font-size: 2rem;
+        height: 10vh;
+        width: 50vw;
+        margin-left: 6.5rem;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: #211D4F;
+        font-weight: bold;
+    }
+
+    .sec {
+        margin: 0 5rem;
+    }
+
+    .images {
+        display: flex;
+        max-width: 100%;
+        margin-top: 3rem;
+    }
+    
+    .images > .c1 {
+        z-index: 1;
+        height: 13rem;
+        width: 18.2rem;
+        margin-bottom: 2rem;
+        margin-left: -0.8rem;
+    }
+
+    .images > .c2 {
+        z-index: 1;
+        height: 13rem;
+        width: 18.2rem;
+        margin-left: -3rem;
+    }
+    
+    .images > .c3 {
+        z-index: 1;
+        height: 13rem;
+        width: 18.2rem;
+        margin-left: -2.8rem;
+    }
+    
+    .lung, .breast, .colon {
+        width: 33%;
+        height: 20rem;
+        text-align: left;
+        box-shadow: 0 0 1rem #d4bdf7;
+        background-color: white;
+        color: #211D4F;
+        margin-top: 3.5rem;
+        padding-top: 5rem;
+        border-radius: 1rem;
+    }
+    
+    .service > .lung {
+        margin-left: 1.5rem;
+    }
+    
+    .service > .breast {
+        margin: 3.5rem 1.5rem;
+    }
+    
+    .service > .colon {
+        margin-right: 1.5rem;
+    }
+
+    .lung > a > button {
+        margin-top: 3rem;
+    }
+
+    .breast > a > button {
+        margin-top: 2rem;
+    }
+
+    .colon > a > button {
+        margin-top: 3.2rem;
+    }
+    
+    .lung > a > button:hover, .breast > a > button:hover, .colon > a > button:hover{
+        background-color: blueviolet;
+        color: #F4EEFD;
+        transition: 0.5s ease;
+        cursor: pointer;
+    }
+
+    .works > .headings {
+        text-align: center;
+        margin-top: 0;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 1.5rem;
+        color: #211D4F;
+    }
+
+    .footer {
+        width: 100%;
+        margin-left: 1%;
+        margin-top: 3rem;
+    }
+}
+
+@media screen and (max-width: 431px) {
+    .logo {
+        height: 7vh;
+        width: 4vw;
+    }
+    
+    .heading{
+        margin-top: -2.8rem;
+        margin-left: 3.2rem;
+        font-size: 2.3rem;
+    }
+
+    .navbar {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        background-color: rgba(255, 255, 255, 1.0);
+        z-index: 2;
+        margin-top: -1rem;
+        margin-left: -1rem;
+        margin-right: -1rem;
+        border-radius: 2rem;
+    }
+    
+    .nav {
+        display: flex;
+        flex-wrap: wrap;
+        color: black;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2.5%;
+        margin-left: 15%;
+        padding-bottom: 1rem;
+        padding-top: 1rem;
+    }
+    
+    .nav > a {
+        margin: 0.5rem;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: lighter;
+        text-decoration: none;
+        color: #211D4F;
+    }
+    
+    .nav > a:hover {
+        color: blueviolet;
+        transition: 0.1s ease;
+        border-bottom: blueviolet 3px solid;
+        cursor: pointer;
+    }
+    
+    .nav > a:active {
+        color: #EF5261;
+    }
+    
+    .logosetup {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .navbar > .log {
+        margin-top: 0rem;
+        margin-left: -14rem;
+    }
+    
+    .navbar > .log > a{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    
+    .navbar > .log:hover{
+        color: #EF5261;
+        transition: 0.1s ease;
+        cursor: pointer;
+    }
+
+    .main {
+        display: block;
+        overflow-x: hidden;
+    }
+
+    .main > .combopicture {
+        display: flex;
+    }
+    
+    .main > .combopicture > .doctor {
+        margin-top: 2rem;
+        height: 70vh;
+        width: 40vw;
+        z-index: 1;
+        margin-left: 1.5rem;
+    }
+
+    .main > .combopicture > .blob {
+        height: 4rem;
+        width: 40rem;
+        margin-left: -18rem;
+        margin-top: 2.5rem;
+    }
+
+    .main > .content {
+        height: 80vh;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -2rem;
+    }
+    
+    .main > .content > ul {
+        font-size: 1.5rem;
+        margin-top: -1rem;
+        margin-left: 6rem;
+        color: #211D4F;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    
+    .main > .content > h1 {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 2.5rem;
+        margin-left: 8.6rem;
+        margin-top: -11rem;
+        color: #211D4F;
+    }
+    
+    .main > .content > p {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        margin-left: 8.7rem;
+        font-size: 1.3rem;
+        margin-top: -15rem;
+    }
+    
+    .main > .content > a {
+        margin-top: -22rem;
+        width: 20rem;
+    }
+
+    .main > .content > a >button {
+        font-size: 1rem;
+        width: 10rem;
+        border-radius: 5rem;
+        padding: 1rem 1rem;
+        background-color: #F4EEFD;
+        cursor: pointer;
+    }
+    
+    .main > .content > a > button:hover {
+        background-color: blueviolet;
+        color: #F4EEFD;
+        transition: 0.5s ease;
+        cursor: pointer;
+    }
+
+    .about {
+        display: block;
+        flex-wrap: wrap;
+        max-width: 100%;
+        margin-top: -30rem;
+    }
+    
+    .about > .tagline {
+        font-size: 2rem;
+        height: 10vh;
+        width: 50vw;
+        margin-left: 6.5rem;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: #211D4F;
+        font-weight: bold;
+    }
+
+    .sec {
+        margin: 0 5rem;
+    }
+
+    .images {
+        display: flex;
+        max-width: 100%;
+        margin-top: 3rem;
+    }
+    
+    .images > .c1 {
+        z-index: 1;
+        height: 13rem;
+        width: 18.2rem;
+        margin-bottom: 2rem;
+        margin-left: -0.8rem;
+    }
+
+    .images > .c2 {
+        z-index: 1;
+        height: 13rem;
+        width: 18.2rem;
+        margin-left: -3rem;
+    }
+    
+    .images > .c3 {
+        z-index: 1;
+        height: 13rem;
+        width: 18.2rem;
+        margin-left: -2.8rem;
+    }
+    
+    .lung, .breast, .colon {
+        width: 33%;
+        height: 20rem;
+        text-align: left;
+        box-shadow: 0 0 1rem #d4bdf7;
+        background-color: white;
+        color: #211D4F;
+        margin-top: 3.5rem;
+        padding-top: 5rem;
+        border-radius: 1rem;
+    }
+    
+    .service > .lung {
+        margin-left: 1.5rem;
+    }
+    
+    .service > .breast {
+        margin: 3.5rem 1.5rem;
+    }
+    
+    .service > .colon {
+        margin-right: 1.5rem;
+    }
+
+    .lung > a > button {
+        margin-top: 3rem;
+    }
+
+    .breast > a > button {
+        margin-top: 2rem;
+    }
+
+    .colon > a > button {
+        margin-top: 3.2rem;
+    }
+    
+    .lung > a > button:hover, .breast > a > button:hover, .colon > a > button:hover{
+        background-color: blueviolet;
+        color: #F4EEFD;
+        transition: 0.5s ease;
+        cursor: pointer;
+    }
+
+    .works > .headings {
+        text-align: center;
+        margin-top: 0;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 1.5rem;
+        color: #211D4F;
+    }
+
+    .footer {
+        width: 100%;
+        margin-left: 1%;
+        margin-top: 3rem;
+    }
+}
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
