@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breast Cancer Result</title>
+    <style>
+        body {
+            background-color: #F4EEFD;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 25px;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+
+        .result-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #211D4F;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            height: 570px;
+            margin-top: 50px;
+            border-radius: 50px;
+        }
+
+        .result-text {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .image-preview {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #EF5261;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            font-size: 16px;
+            max-width: 200px;
+        }
+
+        .more {
+            margin: 20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <h1>Colon Cancer Detection Result</h1>
+        <img src="{{ MEDIA_URL }}{{ new_image.image.url }}" class="image-preview" alt="Uploaded Image" width="300px" width="300px">
+        <p class="result-text">Result: {{ result }}</p>
+        {% if result == "Malignant Cases"  %} 
+        <p class="more">You have spreadable cancer.
+        <br> Malignant Cases: Malignant tumors are cancerous and can invade nearby tissues and spread to other parts of the body.
+        </p> {%endif%}
+        {% if result == "Benign Cases" %} 
+        <p class="more">You have non spreadable cancer.
+           <br> Benign Cases: Benign tumors are not cancerous and usually do not spread to surrounding tissues. 
+        </p> {%endif%}
+   
+    
+        <a href="{% url 'colon' %}" class="back-btn">Predict Another Image</a>
+    </div>
+</body>
+</html>

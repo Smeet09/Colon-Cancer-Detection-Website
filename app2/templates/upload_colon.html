@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colon Cancer Prediction</title>
+    <style>
+        body {
+            background-color: #F4EEFD;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin-bottom: 50px;
+        }
+
+        p {
+            color: #fff;
+            text-align: center;
+            font-size: 17px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        /* Styles for the upload form container */
+        .upload-form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 50px;
+            background-color: #211D4F;
+        }
+
+        /* Styles for the file input */
+        .upload-form input[type="file"] {
+            display: none;
+        }
+
+        .upload-form label.upload-btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #FF9785;
+            color: #fff;
+            border-radius: 15px;
+            cursor: pointer;
+            margin-left: 130px;
+            margin-top: 15px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 15px;
+        }
+
+        /* Styles for the image preview */
+        .image-preview {
+            max-width: 100%;
+            max-height: 300px;
+            margin-top: 20px;
+            margin-left: 45px;
+            display: none; /* Initially hide the preview */
+        }
+
+        /* Style for the submit button */
+        .upload-form input[type="submit"] {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #FF9785;
+            color: #fff;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            margin-left: 150px;
+            margin-top: 15px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 15px;
+        }
+
+        /* Style for the image preview container */
+        .image-preview-container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload Colon Image</h1>
+    <form method="post" enctype="multipart/form-data" class="upload-form">
+        {% csrf_token %}
+        <p>Select Histopathological Image</p>
+        <label for="image" class="upload-btn">Select Image</label>
+        <input type="file" name="image" id="image" accept="image/*" onchange="previewImage(event)">
+        <div class="image-preview-container">
+            <img id="image-preview" class="image-preview" src="#" alt="Image Preview">
+        </div>
+        <br>
+        <input type="submit" value="Upload">
+    </form>
+
+    <script>
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var preview = document.getElementById('image-preview');
+                preview.src = reader.result;
+                preview.style.display = 'block'; // Make the preview visible
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+</body>
+</html>
