@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lung Cancer Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F4EEFD;
+            color: white;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #211D4F;
+            border-radius: 50px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            padding-bottom: 30px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        p {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        h3 {
+            display: block;
+            text-align: center;
+            font-size: 1.17em;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            font-weight: bold;
+            unicode-bidi: isolate;
+        }
+        .back-btn {
+            margin-left: 39%;
+            background-color: #EF5261;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+        }
+        .more {
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lung Detection Result</h1>
+        <img src="{{ latest_image.image.url }}" alt="Uploaded Image" height="200px" width="300px">
+        <p><h3><strong>Result:</strong> {{ latest_image.result }}
+            {% if latest_image.result == "Malignant Cases"  %} 
+            <p class="more">You have spreadable cancer.
+            <br> Malignant Cases: Malignant tumors are cancerous and can invade nearby tissues and spread to other parts of the body.
+            </p> {%endif%}
+            {% if latest_image.result == "Benign Cases" %} 
+            <p class="more">You have non spreadable cancer.
+               <br> Benign Cases: Benign tumors are not cancerous and usually do not spread to surrounding tissues. 
+            </p> {%endif%}
+            {% if latest_image.result == "Normal Cases" %}  
+           <p class="more">You are normal and cancer has not been detected. 
+            Normal Cases: No evidence of cancer is found in the image.
+            </p> {%endif%}
+        
+        </h3></p>
+        <a href="{% url 'upload_image' %}" class="back-btn">Predict Another Image</a>
+    </div>
+</body>
+</html>

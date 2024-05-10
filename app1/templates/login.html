@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="icon" href="{% static 'img/favicon.png' %}">
+    <style>
+        /* CSS for messages */
+.messages {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.message {
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.error {
+    background-color: #ffcccc;
+    color: #990000;
+}
+
+.success {
+    background-color: #ccffcc;
+    color: #006600;
+}
+
+.info {
+    background-color: #cce6ff;
+    color: #005c99;
+}
+
+.warning {
+    background-color: #ffffcc;
+    color: #996600;
+}
+
+    </style>
+</head>
+<body>
+<div class="main">
+    <input type="checkbox" id="chk" aria-hidden="true">
+
+    <div class="signup">
+        <form autocomplete="off" action="{% url 'login_or_signup' %}" method="POST">
+            {% csrf_token %}
+            <p>Sign Up</p>
+            <input type="text" placeholder="Name" name="username" required>
+            <input type="email" placeholder="Email Address" name="email" required>
+            <input type="password" placeholder="Password" name="password1" required>
+            <input type="password" placeholder="Password" name="password2" required>
+            <input type="hidden" name="action" value="signup">
+            <button>Sign Up</button>
+            <label for="chk" aria-hidden="true">Already have an account? &nbsp <b class="bold">LOGIN</b></label>
+        </form>
+    </div>
+
+    <div class="login">
+        <form autocomplete="on" action="{% url 'login_or_signup' %}" method="POST">
+            {% csrf_token %}
+            <p>Log In</p>
+            <input type="text" placeholder="User Name" name="username" required>
+            <input type="password" placeholder="Password" name="password" required>
+            <input type="hidden" name="action" value="login">
+            <button>Log In</button>
+            <label for="chk" aria-hidden="true">New user? &nbsp <b class="bold">SIGNUP</b></label>
+        </form>
+        {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="message {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+    </div>
+
+</div>
+
+
+</body>
+</html>

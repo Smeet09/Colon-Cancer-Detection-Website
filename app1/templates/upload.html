@@ -1,0 +1,116 @@
+<!-- upload_image.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lung Cancer Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F4EEFD;
+        }
+
+        .container {
+            background-color: #211D4F;
+            max-width: 50%;
+            width: 25vw;
+            max-height: 50%;
+            height: 55vh;
+            margin-left: 37%;
+            margin-top: 10%;
+            border-radius: 50px;
+        }
+
+        h1 {
+            text-align: center;
+            padding-top: 20px;
+            color: white;
+        }
+
+        form {
+            margin: 0 auto;
+            width: 300px;
+            text-align: center;
+            position: relative;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        label {
+            display: block;
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        label:hover {
+            background-color: #2980b9;
+        }
+
+        #uploaded-image {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            max-height: 200px;
+            margin-top: 20px;
+        }
+         
+        button[type="submit"] {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px 20px;
+            background-color: #EF5261;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #EF5261;
+        }
+
+        
+        #image-preview {
+            max-width: 300px;
+            max-height: 300px;
+            margin-top: 20px;
+            display: none; /* Initially hide the preview */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Lung Image</h1>
+        <div id="preview"></div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="image" accept="image/*" onchange="previewImage(event)">
+            <img id="image-preview" src="#" alt="Image Preview">
+            <br>
+            <input type="submit" value="Upload">
+        </form>
+        
+    </div>
+    <!-- <div id="preview"></div> -->
+    <script>
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var preview = document.getElementById('image-preview');
+                preview.src = reader.result;
+                preview.style.display = 'block'; // Make the preview visible
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+    
+</body>
+</html>
