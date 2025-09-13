@@ -1,6 +1,7 @@
 body {
     background-color: #F4EEFD;
     font-size: 16px;
+    overflow-x: hidden;
 }
 
 .logo {
@@ -223,15 +224,15 @@ body {
 }
 
 .service > .lung {
-    margin-left: 1.5rem;
+    margin-right: 0.75rem;
 }
 
 .service > .breast {
-    margin: 0 1.5rem;
+    margin: 0 0.75rem;
 }
 
 .service > .colon {
-    margin-right: 1.5rem;
+    margin-left: 0.75rem;
 }
 
 .lung > h2, .breast > h2, .colon > h2  {
@@ -417,6 +418,51 @@ body {
 
 .footer > .ft3 > .mail > .r {
     margin-top: -0.2rem;
+}
+
+/* Style for Coming Soon buttons to match Colon cancer button */
+.coming-soon-btn {
+    font-size: 1rem;
+    margin: 1.5rem 1.5rem;
+    border-radius: 3.2rem;
+    padding: 0.5rem;
+    background-color: white;
+    color: #211D4F;
+    border: 1px solid blueviolet;
+    cursor: not-allowed;
+    position: relative;
+    width: 120px; /* Match the width of Check Now button */
+    text-align: center;
+}
+
+/* Tooltip styling */
+.coming-soon-btn::after {
+    content: "Feature in development";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    width: max-content;
+}
+
+.coming-soon-btn:hover::after {
+    opacity: 1;
+}
+
+/* Hover effect - subtle change to match disabled state */
+.coming-soon-btn:hover {
+    background-color: #f0f0f0;
+    color: #666;
+    border-color: #999;
 }
 
 @media screen and (min-width: 432px) and (max-width: 768px) {

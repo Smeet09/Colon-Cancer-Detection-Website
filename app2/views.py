@@ -1,111 +1,77 @@
 from django.shortcuts import render
-
-# Create your views here.
 from django.http import HttpResponse
-from django.shortcuts import render
 from .forms import ColonUploadForm
 from .models import UploadedImage
 import numpy as np
-from PIL import Image
-from keras.preprocessing import image
-from django.conf import settings
-
-
-
-from .forms import ColonUploadForm
-from .models import UploadedImage
-import numpy as np
+from PIL import Image as PILImage
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
-from django.shortcuts import render
-from PIL import Image as PILImage
+from .gradcam import generate_gradcam_overlay
+import os
 
 # Load the pre-trained model
-model = load_model('C:\\Users\\Dhruv Patel\\Desktop\\bisag_django\\project\\cancer2\\app2\\Coloncancer11_model.keras')
-print('Model Colon Cancer Successful')
-# Define the target size for image resizing (must match the input size used during training)
+model = load_model('D:\\PDEU\\SEM-2\\NN & DL\\Cancer-Detection-Website\\app2\\best_inception_model.h5')
+print('Model Colon Cancer Loaded Successfully')
+
+# Define the target size for image resizing (must match the model input)
 target_size = (299, 299)
 
-# Define the predict_image function
+# Prediction helper
 def predict_image(image_arr):
     try:
-        processed_img = image_arr
-
-        if processed_img is not None:
-            # Make prediction
-            prediction = model.predict(processed_img)
-
-            # Get the predicted class (0 for Benign, 1 for Malignant)
-            predicted_class = np.argmax(prediction, axis=1)[0]
-
-            # Define your classes
-            classes = ['Benign Cases', 'Malignant Cases']
-
-            # Return the result and probability
-            probability = float(prediction[0][predicted_class])
-            result = classes[predicted_class]
-
-            return result, probability
-        else:
-            print("Error: Image preprocessing failed")
-            return 'Error: Image preprocessing failed', 0.0
+        prediction = model.predict(image_arr)
+        predicted_class = np.argmax(prediction, axis=1)[0]
+        classes = ['Benign Cases', 'Malignant Cases']
+        probability = float(prediction[0][predicted_class])
+        result = classes[predicted_class]
+        return result, probability
     except Exception as e:
         print(f'Error during prediction: {str(e)}')
-        return f'Error during prediction: {str(e)}', 0.0
+        return f'Error: {str(e)}', 0.0
 
-# Define the colon_cancer view
-# Define the colon_cancer view
+# Main view for colon cancer detection
 def colon_cancer(request):
     if request.method == 'POST':
         form = ColonUploadForm(request.POST, request.FILES)
         if form.is_valid():
-            # Get the uploaded image file from the form
-            image_file = request.FILES.get('image')
+            image_file = request.FILES['image']
+            image_file.seek(0)
 
-            if image_file:
-                # Create a new UploadedImage instance
-                new_image = UploadedImage(image=image_file)
+            # Save safely
+            new_image = UploadedImage(image=image_file)
+            new_image.save()
+            img_path = new_image.image.path
 
-                # Save the uploaded image instance
-                new_image.save()
+            # Preprocess
+            img = PILImage.open(img_path).convert("RGB")
+            img = img.resize((299, 299))
+            img_array = image.img_to_array(img)
+            img_array = np.expand_dims(img_array, axis=0) / 255.0
 
-                # Load the uploaded image
-                img = PILImage.open(new_image.image)
+            result, probability = predict_image(img_array)
 
-                # Center crop the image
-                width, height = img.size
-                left = (width - min(width, height)) / 2
-                top = (height - min(width, height)) / 2
-                right = (width + min(width, height)) / 2
-                bottom = (height + min(width, height)) / 2
-                img = img.crop((left, top, right, bottom))
+            new_image.result = result
+            new_image.probability = probability
+            new_image.save()
 
-                # Resize the image to the target size
-                img = img.resize(target_size)
+            gradcam_path = None
+            if result == "Malignant Cases":
+                gradcam_result = generate_gradcam_overlay(
+                    image_path=img_path,
+                    model=model,
+                    last_conv_layer_name="mixed10",
+                    class_names=["Benign", "Malignant"]
+                )
+                gradcam_path = gradcam_result[0] if isinstance(gradcam_result, tuple) else gradcam_result
 
-                # Convert the image to an array
-                img_array = image.img_to_array(img)
-
-                # Expand the dimensions to match the input shape expected by the model
-                img_array = np.expand_dims(img_array, axis=0)
-
-                # Normalize pixel values to between 0 and 1
-                img_array /= 255.0
-
-                # Call predict_image and get the result and probability
-                result, probability = predict_image(image_arr=img_array)
-
-                # Update the UploadedImage instance with result and probability
-                new_image.result = result
-                new_image.probability = probability
-
-                # Save the Updated UploadedImage instance
-                new_image.save()
-
-                # Pass the result and probability to the template context
-                return render(request, 'result_colon.html', {'result': result, 'probability': probability, 'new_image':new_image})
-            else:
-                return HttpResponse('Error: Image file not found')
+            return render(request, 'result_colon.html', {
+                'result': result,
+                'probability': round(probability * 100, 2),
+                'new_image': new_image,
+                'gradcam_path': '/' + gradcam_path if gradcam_path else None
+            })
+        else:
+            return render(request, 'upload_colon.html', {'form': form})
     else:
         form = ColonUploadForm()
     return render(request, 'upload_colon.html', {'form': form})

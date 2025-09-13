@@ -71,8 +71,8 @@ def login_signup(request):
 
 
 
-# Load the pre-trained model
-model = load_model('C:\\Users\\Dhruv Patel\\Desktop\\bisag_django\\project\\cancer\\app1\\Lungcancer_model.h5')
+#Load the pre-trained model
+model = load_model('d:\\PDEU\\SEM-2\\NN & DL\\Cancer-Detection-Website\\app2\\best_inception_model.h5')
 print("*** >Lung Cancer Model Loaded Successfully< ***")
 
 

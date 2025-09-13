@@ -51,6 +51,28 @@
             .dropdown:hover .dropdown-content {
                 display: block;
             }
+            
+    
+            .coming-soon::after {
+                content: "Feature in development";
+                position: absolute;
+                bottom: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                background: #333;
+                color: white;
+                padding: 5px 10px;
+                border-radius: 5px;
+                font-size: 12px;
+                white-space: nowrap;
+                opacity: 0;
+                transition: opacity 0.3s;
+                pointer-events: none;
+            }
+            
+            .coming-soon:hover::after {
+                opacity: 1;
+            }
         </style>
     </head>
     <body>
@@ -131,26 +153,26 @@
             <img class="c3" src="{%static 'img/c3.webp'%}" alt="c3">
         </div>
         <div class="service">
-            <div class="lung">
-                <h2>Lung cancer</h2>
-                <p>A cancer that begins in the lungs and most often occurs in people who smoke.</p>
-                <a href="{%url 'upload_image'%}">
-                    <button>Check Now ></button>
-                </a>
-            </div>
-            <div class="breast">
-                <h2>Breast cancer</h2>
-                <p>Cancer that forms in the breast tissue. Breast cancer occurs in women and rarely in men also.</p>
-                <a href="{% url 'predict' %}">
-                    <button>Check Now ></button>
-                </a>
-            </div>
             <div class="colon">
                 <h2>Colon cancer</h2>
                 <p>A cancer of the colon or rectum, located at the digestive tract's lower end.</p>
                 <a href="{% url 'colon' %}">
                     <button>Check Now ></button>
                 </a>
+            </div>
+            
+            <div class="breast">
+                <h2>Breast cancer</h2>
+                <p>Cancer that forms in the breast tissue. Breast cancer occurs in women and rarely in men also.</p>
+                <button class="coming-soon-btn">Coming Soon</button>
+            </div>
+            <div class="lung">
+                <h2>Lung cancer</h2>
+                <p>A cancer that begins in the lungs and most often occurs in people who smoke.</p>
+                <!-- <a href="{%url 'upload_image'%}">
+                    <button>Check Now ></button>
+                </a> -->
+                <button class="coming-soon-btn">Coming Soon</button>
             </div>
         </div>
         <div class="works" id="works">
@@ -164,7 +186,7 @@
                 </div>
                 <div class="sec1">
                     <h1 class="head2">02</h1>
-                    <p>Upload required documents ( CT Scan / Ultrasound / Histopathological images)</p>
+                    <p>Upload required documents (Histopathological images / Ultrasound / CT Scan )</p>
                 </div>
                 <div class="sec1">
                     <h1 class="head3">03</h1>
@@ -189,8 +211,8 @@
                 </div>
                 <div class="mail">
                     <i class="fa-solid fa-envelope"></i>
-                    <p class="d">dhruv.ict20@sot.pdpu.ac.in</p>
-                    <p class="r">rishi.jict20@sot.pdpu.ac.in</p>
+                    <p class="d">24mds021@sot.pdpu.ac.in</p>
+                    <!-- <p class="r">rishi.jict20@sot.pdpu.ac.in</p> -->
                 </div>
             </div>
         </div>

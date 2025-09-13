@@ -1,98 +1,312 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Colon Cancer Prediction</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'img/favicon.png' %}">
+    <script src="https://kit.fontawesome.com/7b49717b02.js" crossorigin="anonymous"></script>
     <style>
+        /* Exact navbar styling from your original CSS */
         body {
             background-color: #F4EEFD;
+            font-size: 16px;
+        }
+
+        .logo {
+            display: flex;
+            height: 5vh;
+            width: 2.5vw;
+            padding-top: 3vh;
+            padding-left: 2vw;
+        }
+
+        .logosetup {
+            height: 2%;
+            width: 15%;
+        }
+
+        .navbar {
+            display: flex;
+            flex-wrap: wrap; 
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 1.0);
+            z-index: 2;
+            margin-top: -1rem;
+            margin-left: -1rem;
+            margin-right: -1rem;
+            border-radius: 2rem;
+        }
+
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            color: black;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            margin-left: 27%;
+            padding-bottom: 1rem;
+            padding-top: 1rem;
+        }
+
+        .nav > a {
+            margin: 1rem;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: lighter;
+            text-decoration: none;
+            color: #211D4F;
+        }
+
+        .nav > a:hover {
+            color: blueviolet;
+            transition: 0.1s ease;
+            border-bottom: blueviolet 3px solid;
+            cursor: pointer;
+        }
+
+        .nav > a:active {
+            color: #EF5261;
+        }
+
+        .logosetup {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .heading {
+            margin-top: 0.85rem;
+            color: blueviolet;
+            font-size: 2.5rem;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 600;
+        }
+
+        .navbar > .log {
+            margin-top: 2.1rem;
+        }
+
+        .navbar > .log > a {
+            padding-left: 25rem;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            text-decoration: none;
+            color: blueviolet;
+        }
+
+        .navbar > .log:hover {
+            color: #EF5261;
+            transition: 0.1s ease;
+            cursor: pointer;
+        }
+
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            margin-left: 20%;
+            margin-top: 1.3%;
+        }
+
+        .dropbtn {
+            background-color: transparent;
+            color: blueviolet;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            padding: 12px 16px;
+            font-weight: 600;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 25px;
+            right: 0;
+        }
+
+        .dropdown-content a {
+            color: blueviolet;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            border-radius: 25px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Upload form styling */
+        .upload-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
         }
 
         h1 {
             text-align: center;
-            margin-top: 50px;
+            color: #211D4F;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
 
-        p {
-            color: #fff;
-            text-align: center;
-            font-size: 17px;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-        }
-
-        /* Styles for the upload form container */
         .upload-form {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            border-radius: 50px;
-            background-color: #211D4F;
+            background-color: white;
+            padding: 30px;
+            border-radius: 2rem;
+            box-shadow: 0 0 1rem #d4bdf7;
+            margin-top: 20px;
         }
 
-        /* Styles for the file input */
+        .upload-form p {
+            color: #211D4F;
+            text-align: center;
+            font-size: 1.2rem;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin-bottom: 20px;
+        }
+
         .upload-form input[type="file"] {
             display: none;
         }
 
         .upload-form label.upload-btn {
-            display: inline-block;
-            padding: 10px 15px;
-            background-color: #FF9785;
-            color: #fff;
-            border-radius: 15px;
+            display: block;
+            padding: 12px 20px;
+            background-color: blueviolet;
+            color: white;
+            border-radius: 3.2rem;
             cursor: pointer;
-            margin-left: 130px;
-            margin-top: 15px;
+            margin: 0 auto;
+            width: fit-content;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
-            font-size: 15px;
-        }
-
-        /* Styles for the image preview */
-        .image-preview {
-            max-width: 100%;
-            max-height: 300px;
-            margin-top: 20px;
-            margin-left: 45px;
-            display: none; /* Initially hide the preview */
-        }
-
-        /* Style for the submit button */
-        .upload-form input[type="submit"] {
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: #FF9785;
-            color: #fff;
-            border: none;
-            border-radius: 15px;
-            cursor: pointer;
-            margin-left: 150px;
-            margin-top: 15px;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            font-size: 15px;
-        }
-
-        /* Style for the image preview container */
-        .image-preview-container {
+            font-size: 1rem;
+            transition: background-color 0.5s ease;
             text-align: center;
+        }
+
+        .upload-form label.upload-btn:hover {
+            background-color: #8a2be2;
+        }
+
+        .image-preview {
+            max-width: 300px;
+            max-height: 300px;
+            margin: 20px auto;
+            display: none;
+            border-radius: 15px;
+            border: 2px solid #ddd;
+        }
+
+        .upload-form input[type="submit"] {
+            display: block;
+            padding: 12px 25px;
+            background-color: blueviolet;
+            color: white;
+            border: none;
+            border-radius: 3.2rem;
+            cursor: pointer;
+            margin: 30px auto 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 1rem;
+            transition: background-color 0.5s ease;
+        }
+
+        .upload-form input[type="submit"]:hover {
+            background-color: #8a2be2;
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 2rem;
+            box-shadow: 0 0 1rem #d4bdf7;
+            text-align: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .result h2 {
+            color: #211D4F;
+            margin-bottom: 15px;
+        }
+
+        .result p {
+            color: #211D4F;
+            font-size: 1.1rem;
         }
     </style>
 </head>
 <body>
-    <h1>Upload Colon Image</h1>
-    <form method="post" enctype="multipart/form-data" class="upload-form">
-        {% csrf_token %}
-        <p>Select Histopathological Image</p>
-        <label for="image" class="upload-btn">Select Image</label>
-        <input type="file" name="image" id="image" accept="image/*" onchange="previewImage(event)">
-        <div class="image-preview-container">
-            <img id="image-preview" class="image-preview" src="#" alt="Image Preview">
+    <!-- Navbar Section - identical to original -->
+    <div class="navbar">
+        <span class="logosetup">
+            <div class="logo">
+                <img src="{% static 'img/ribbon_3304673.png' %}" alt="photo">
+            </div>
+            <div class="heading">
+                LIFƐ>
+            </div>
+        </span>
+        <div class="nav">
+            <a href="{% url 'user' %}">Home</a>
+            <a href="{% url 'user' %}#ab">About Us</a>
+            <a href="{% url 'user' %}#service">Services</a>
+            <a href="{% url 'user' %}#works">Works</a>
         </div>
-        <br>
-        <input type="submit" value="Upload">
-    </form>
+        {% if user %}
+        <div class="dropdown">
+            <button class="dropbtn">{{ request.user }}</button>
+            <div class="dropdown-content">
+                <a href="{% url 'logout' %}">Logout</a>
+            </div>
+        </div>
+        {% else %}
+        <div class="log">
+            <a href="{% url 'login' %}">Login</a>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Main Content -->
+    <div class="upload-container">
+        <h1>Upload Colon Image</h1>
+        <form method="post" enctype="multipart/form-data" class="upload-form">
+            {% csrf_token %}
+            <p>Select Histopathological Image</p>
+            <label for="image" class="upload-btn">Select Image</label>
+            <input type="file" name="image" id="image" accept="image/*" onchange="previewImage(event)">
+            <div class="image-preview-container">
+                <img id="image-preview" class="image-preview" src="#" alt="Image Preview">
+            </div>
+            <input type="submit" value="Upload">
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <h2>Prediction Result</h2>
+            <p>The model predicts: <strong>{{ result }}</strong></p>
+            {% if confidence %}
+            <p>Confidence: {{ confidence }}%</p>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
 
     <script>
         function previewImage(event) {
@@ -100,7 +314,7 @@
             reader.onload = function() {
                 var preview = document.getElementById('image-preview');
                 preview.src = reader.result;
-                preview.style.display = 'block'; // Make the preview visible
+                preview.style.display = 'block';
             }
             reader.readAsDataURL(event.target.files[0]);
         }
